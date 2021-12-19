@@ -6,7 +6,7 @@ Project 2 shows my personal approach when developing a function with inputs of d
 
 Project 3 presents a linear regression that solidified all the mechanics associated with regression analysis.
 
-Project 4 was a great experience that I would like to share in my portfolio. It was selected as the best technical report in my Analytics class. This team work was challenging and rewarding. We applied random forest and gradient boosted trees to determine which produced the highest prediction accuracy. It was a binary classification problem. The objective was to minimize the log loss by determining the ROC-AUC score. 
+Project 4 was a great experience that I would like to share in my portfolio. It was selected as the best technical report in my Analytics class. This team work was challenging and rewarding. We applied random forest and gradient boosted trees to determine which produced the highest prediction accuracy. It was a binary classification problem. The objective was to minimize the log loss by determining the ROC-AUC score. https://1drv.ms/w/s!AqWIgPdfPBHxm2MnPc1IcLB-UEbn?e=DwdlfZ
 
 
 
