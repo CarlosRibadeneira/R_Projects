@@ -122,10 +122,9 @@ b_se <- sqrt(diag(solve(t(X)%*%X)*var_reg[1,1]))
 # check your work using lm
 summary(lm(sales~spend))
 ```
-You should check your work for question 1. Everyone should get this first question completely correct.
+
 
 ## Question 2
-In this question, you will use linear regression to study speeding tickets. Each question builds on the previous question. Your regressions should have more controls as you move through the assignment. Try to capture all of these regression in one nicely formatted table.
 
 What determines how much drivers are fined if they are stopped for speeding? Do demographics like age, gender, and race matter? To answer this question, we'll investigate traffic stops and citations in Massachusetts using data from Makowsky and Stratmann (2009). Even though state law sets a formula for tickets based on how fast a person was driving, police officers in practice often deviate from the formula. An amount for the fine is given only for observations in which the police officer decided to assess a fine.
 
@@ -175,7 +174,7 @@ stargazer(reg1, reg2, type='html')
 The coefficient of age is no longer significant once the MPH over variable is included in the model. This is because age could have been encompassing the data of MPH over when Age was the only variable in the model.
 
 
-f) Is the effect of age on fines linear or non-linear? Assess this question by estimating a model that includes both age and a quadratic age term. Also, control for _MPHover, Female, Black, and Hispanic_. Interpret the coefficients on the age variables. Remember it is non-linear so you can't just read the coefficient.
+f) Is the effect of age on fines linear or non-linear? Assess this question by estimating a model that includes both age and a quadratic age term. Also, control for _MPHover, Female, Black, and Hispanic_. Interpret the coefficients on the age variables.
 ```{r results='asis'}
 speed$Age2<- speed$Age^2
 reg3<-lm(Amount~Age2+Age+MPHover+Black+Hispanic+Female, data = speed)
@@ -209,7 +208,7 @@ Age_Tickets_plot
 ```
 It is worthwhile noting in the plot below that using the criteria previouly mentioned, as age increases, the amount decreases. However, after age 30 the ticket amount starts to increase. As confirmed, in question f the distribution shows a non-linear effect. 
 
-h) Calculate the age that is associated with the lowest predicted fines. __Hint: You can use calculus or an algebraic formula used to find the minimum and maximum of quadratic functions.__ $$y =ax^2 + bx +c \\ x = -\frac{b}{2a}$$
+h) Calculate the age that is associated with the lowest predicted fines. __ $$y =ax^2 + bx +c \\ x = -\frac{b}{2a}$$
 ```{r}
 b <- -0.264765
 a <- 0.003743
@@ -221,7 +220,7 @@ x
 The age associated with the lowest predicted fines is 'r x'
 
 
-i) Do drivers from out of town  and out of state get treated differently? Do state police and local police treat non-locals differently? Estimate a model that allows us to assess whether out of towners and out of staters are treated differently and whether state police respond differently to out of towners and out of staters. Interpret the coefficients on the relevant variables. __Hint: you have to do something more than just including the dummy variables.__
+i) Do drivers from out of town  and out of state get treated differently? Do state police and local police treat non-locals differently? Estimate a model that allows us to assess whether out of towners and out of staters are treated differently and whether state police respond differently to out of towners and out of staters. Interpret the coefficients on the relevant variables. 
 local police and intowners left out
 ```{r results='asis'}
 reg6<-lm(Amount~Age2+Age+MPHover+Black+Hispanic+Female+StatePol, data = speed)
@@ -237,7 +236,7 @@ This model reveals several different insights about the amount individuals are f
 Secondly, the state police do treat nonlocals differently than the local police force because the state police tend to fine a higher amount to out-of-towners rather than out-of-staters, but the local police force tends to fine a higher amount to out-of-staters rather than out-of-towners. This is evident in the fact that the state police and out-of-towner interaction term has a coefficient of 6.173 (reference Amount #1-reg) but the state police and out of state interaction term is not significant (reference Amount (1)-reg). However, the local police have a significant coefficient of 7.7888 (reference Amount (4)-reg8)  for out-of-staters, but a low coefficient of 2.513 (reference Amount (4)-reg8) for out-of-towners.Therefore, the local police is charging out-of-staters more than out-of-towners and more than state police is charging any non-locals.
 
 
-j) Test whether the two state police interaction terms are jointly significant. Briefly explain your results. __Hint: it says `jointly` so it is not a T-test.__
+j) Test whether the two state police interaction terms are jointly significant. Briefly explain your results.
 ```{r}
 reg5<-(lm(Amount~Age2+Age+MPHover+Black+Hispanic+Female+OutTown+OutState+StatePol+OutTown*StatePol+OutState*StatePol, data = speed))
 linearHypothesis(reg5, c("OutTown:StatePol=0","OutState:StatePol=0"))
